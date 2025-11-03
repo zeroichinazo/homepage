@@ -92,7 +92,7 @@ const About: React.FC = () => {
           <img src="assets/logo/logo_menber.svg" alt="member" />
           <div>
             <div className={styles.ja}>メンバー紹介</div>
-            <div className={styles.en}>Menber</div>
+            <div className={styles.en}>Member</div>
           </div>
         </div>
 
