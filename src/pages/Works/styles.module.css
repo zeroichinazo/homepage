@@ -1,0 +1,48 @@
+.page {
+  padding: 0 16px;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+.titleRow img {
+  width: 45px;
+  height: 45px;
+}
+.ja {
+  color: #595757;
+  font-size: 24px;
+  font-weight: 700;
+}
+.en {
+  color: #5185c5;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.revealVisible {
+  animation: worksFadeUp 800ms ease-out forwards var(--delay, 0ms);
+}
+@keyframes worksFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.filterBtn {
+  background: #595757;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 16px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+/* カルーセルはHomeページに実装 */

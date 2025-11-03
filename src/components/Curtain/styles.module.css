@@ -1,0 +1,32 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  background: #ffffff; /* 背景は白で、上がる幕だけ色を付ける */
+  z-index: 60; /* Loading(50) より上でも良いが、実運用は Loading 終了後に表示 */
+  overflow: hidden;
+}
+
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120%; /* 画面全体を覆い切るため少し大きめ */
+  background: #595757; /* 幕の色 */
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  transform: translateY(100%);
+  animation: rise var(--dur, 900ms) ease-in-out var(--delay, 0ms) forwards;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(100%);
+  }
+  90% {
+    transform: translateY(-6%); /* すこしオーバーシュート */
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}

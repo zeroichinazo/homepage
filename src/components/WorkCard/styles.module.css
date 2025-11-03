@@ -1,0 +1,77 @@
+.card {
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 26px;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.image {
+  width: 100%;
+  display: block;
+}
+.inner {
+  padding: 16px;
+  position: relative;
+}
+.title {
+  color: #595757;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+}
+.period {
+  color: #595757;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 8px 0;
+}
+.description {
+  color: #595757;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 4px 0;
+}
+.note {
+  color: #ea6060;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.tag {
+  background: #ea6060; /* デフォルト。個別に style で上書き可能 */
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.xButton {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: #555555; /* 添付の濃いグレーに近い色 */
+  color: #ffffff;
+  text-decoration: none;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+}
+.xButton:visited,
+.xButton:hover,
+.xButton:active,
+.xButton:focus {
+  background: #555555; /* 押下後も色を変えない */
+  color: #ffffff;
+  text-decoration: none;
+}

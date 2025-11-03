@@ -1,0 +1,431 @@
+.page {
+  padding: 0 16px;
+}
+
+.fullBleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* PCフレーム内では fullBleed をアプリ幅に合わせる（同モジュール内の.pageを基点に適用） */
+@media (min-width: 768px) {
+  .page {
+    padding: 0; /* PCでは中央カラム幅に合わせて左右パディングを除去 */
+  }
+  .catch {
+    /* PCでは中央カラム（app width）の左端に揃える */
+    left: calc(50% - (var(--app-width, 428px) / 2));
+  }
+  .page .fullBleed {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* about/works セクション内の左右パディングもPCでは除去して厳密に中央に */
+  .aboutSection,
+  .worksSection {
+    padding: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  /* PCではaboutセクションのロゴタイル背景を無効化 */
+  .aboutBrick::after {
+    display: none;
+  }
+  /* about セクションにも格子背景を付与（他セクションと統一） */
+  .aboutSection {
+    position: relative;
+  }
+  .aboutSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        to right,
+        rgba(89, 87, 87, 0.1) 0.8px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(89, 87, 87, 0.1) 0.8px, transparent 1px),
+      linear-gradient(#ffffff, #ffffff);
+    background-size: 16px 16px, 16px 16px, auto auto;
+    background-position: 0 0, 0 0, 0 0;
+    z-index: 0;
+  }
+  .aboutSection > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.hero {
+  position: relative;
+  height: 640px;
+  width: 100%;
+  /* blob のサイズ・位置をCSS変数で調整できるように */
+  --blob-red-w: 150px;
+  --blob-red-top: 5px;
+  --blob-red-left: 30px;
+  --blob-green-w: 250px;
+  --blob-green-top: 190px;
+  --blob-green-right: -80px;
+  --blob-blue-w: 200px;
+  --blob-blue-left: -60px;
+  --blob-blue-bottom: 10px;
+  /* ヒーロー導入演出: blob フェード後に catch を開始 */
+  --catch-delay-base: 1500ms;
+  /* catch 完了後に scroll を表示（base + 1600ms 程度） */
+  --scroll-delay: calc(var(--catch-delay-base) + 1600ms);
+}
+
+/* PC（デスクトップ）時は、--pc-blob-* で上書き可能にする（未指定時はモバイル既定値を使用） */
+@media (min-width: 768px) {
+  .hero {
+    --blob-red-w: var(--pc-blob-red-w, 150px);
+    --blob-red-top: var(--pc-blob-red-top, 5px);
+    --blob-red-left: var(--pc-blob-red-left, 30px);
+    --blob-green-w: var(--pc-blob-green-w, 220px);
+    --blob-green-top: var(--pc-blob-green-top, 190px);
+    --blob-green-right: var(--pc-blob-green-right, 0px);
+    --blob-blue-w: var(--pc-blob-blue-w, 180px);
+    --blob-blue-left: var(--pc-blob-blue-left, 0px);
+    --blob-blue-bottom: var(--pc-blob-blue-bottom, 10px);
+  }
+}
+.aboutSection {
+  width: 100%;
+  padding: 0 16px;
+}
+.worksSection {
+  width: 100%;
+  padding: 0 16px;
+}
+
+/* AboutセクションをAboutページと同じレンガ状ロゴ背景に */
+.aboutBrick {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+.aboutBrick::after {
+  content: "";
+  position: absolute;
+  inset: -50% -50% -50% -50%;
+  /* 二層でレンガ状に配置 */
+  background-image: var(--pattern-url), var(--pattern-url);
+  background-repeat: repeat, repeat;
+  background-size: var(--pattern-tile-w, 200px) var(--pattern-tile-h, 140px),
+    var(--pattern-tile-w, 200px) var(--pattern-tile-h, 140px);
+  background-position: 0 0,
+    calc(var(--pattern-tile-w, 200px) / 2)
+      calc(var(--pattern-tile-h, 140px) / 2);
+  transform: rotate(var(--pattern-rotate, -20deg));
+  transform-origin: center;
+  opacity: var(--pattern-opacity, 0.1);
+  animation: homeSlide var(--pattern-speed, 32s) linear infinite;
+  z-index: 0;
+}
+.aboutBrick > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes homeSlide {
+  0% {
+    transform: rotate(var(--pattern-rotate, -20deg)) translate(0, 0);
+  }
+  100% {
+    transform: rotate(var(--pattern-rotate, -20deg)) translate(-180px, 180px);
+  }
+}
+
+/* ヒーロー導入用のアニメーション */
+@keyframes blobSlideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blobSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollFloat {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -8px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes arrowBounce {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+}
+
+/* scroll のフェードイン */
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* セクションのフェードイン */
+/* IntersectionObserver で付与するクラス */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.revealVisible {
+  animation: sectionFadeIn 800ms ease-out forwards;
+}
+@keyframes sectionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.catch {
+  position: absolute;
+  left: -16px; /* ページの左右16pxパディングを打ち消して左端に寄せる */
+  bottom: 340px;
+  color: #595757;
+  font-size: 30px;
+  line-height: 0.8;
+  letter-spacing: 0.25em;
+}
+
+.catchLine {
+  display: inline-block;
+  background: #595757;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 2px;
+  clip-path: inset(0 100% 0 0);
+  animation: catchReveal 900ms ease forwards;
+  will-change: clip-path;
+  animation-delay: var(--catch-delay-base, 0s);
+}
+.indent {
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+.catchLine2 {
+  animation-delay: calc(var(--catch-delay-base, 0s) + 450ms);
+}
+
+@keyframes catchReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.scroll {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  color: #595757;
+  opacity: 0;
+  /* フェードインしてから上下アニメーション開始 */
+  animation: scrollFadeIn 400ms ease forwards var(--scroll-delay),
+    scrollFloat 2s ease-in-out var(--scroll-delay) infinite;
+}
+
+.scroll::after {
+  content: "v";
+  display: block;
+  text-align: center;
+  margin-top: 0px;
+  color: #595757;
+}
+
+.blobRed,
+.blobGreen,
+.blobBlue {
+  position: absolute;
+  display: block;
+  opacity: 0;
+}
+
+.blobRed {
+  width: var(--blob-red-w);
+  height: auto;
+  top: var(--blob-red-top);
+  left: var(--blob-red-left);
+  animation: blobSlideInLeft 800ms ease-out forwards;
+  animation-delay: 0ms;
+}
+
+.blobGreen {
+  width: var(--blob-green-w);
+  height: auto;
+  right: var(--blob-green-right);
+  top: var(--blob-green-top);
+  animation: blobSlideInRight 800ms ease-out forwards;
+  animation-delay: 0ms;
+}
+
+.blobBlue {
+  width: var(--blob-blue-w);
+  height: auto;
+  left: var(--blob-blue-left);
+  bottom: var(--blob-blue-bottom);
+  animation: blobSlideInLeft 800ms ease-out forwards;
+  animation-delay: 0ms;
+}
+
+.sectionTitle,
+.sectionTitleBlue {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 12px;
+}
+/* センター寄せは不要（ロゴ画像自体は .brand で中央） */
+/* Home の Works カルーセル */
+.carousel {
+  position: relative;
+}
+.carouselTrack {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0 16px;
+}
+.slide {
+  flex: 0 0 80%;
+  scroll-snap-align: start;
+}
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(89, 87, 87, 0.6);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  z-index: 5;
+}
+.navBtn:first-of-type {
+  left: -4px;
+}
+.navBtn:last-of-type {
+  right: -4px;
+}
+.sectionTitle img,
+.sectionTitleBlue img {
+  width: 45px;
+  height: 45px;
+}
+.ja {
+  color: #595757;
+  font-size: 22px;
+  font-weight: 700;
+}
+.en {
+  color: #05502b;
+}
+.enBlue {
+  color: #5185c5;
+}
+
+.brand {
+  width: 170px;
+  margin: 40px auto;
+  display: block;
+}
+.desc {
+  color: #595757;
+  line-height: 2;
+  margin: 20px auto;
+}
+.moreBtn {
+  display: block;
+  margin: 16px auto 16px;
+  background: #ea6060;
+  color: #fff !important;
+  padding: 10px 16px;
+  border-radius: 999px;
+  width: fit-content;
+}
+.moreBtnSecondary {
+  display: block;
+  margin: 30px auto 32px;
+  background: #ea6060;
+  color: #fff !important;
+  padding: 10px 16px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.worksSection .workCard {
+  background: #fff;
+  border: 2px solid #5185c5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.workCard img {
+  width: 100%;
+  display: block;
+}
+.workCard .workTitle {
+  padding: 12px;
+  color: #595757;
+}
+
+/* 再定義: PC時の.catch位置（baseのleft:-16pxを上書き） */
+@media (min-width: 768px) {
+  .catch {
+    left: calc(50% - (var(--app-width, 428px) / 2));
+  }
+}

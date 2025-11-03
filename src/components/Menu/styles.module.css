@@ -1,0 +1,87 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.25s ease;
+  z-index: 15;
+}
+
+.open.overlay {
+  background: #fff;
+  pointer-events: auto;
+}
+
+.panel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: calc(100% - 40px);
+  max-width: 420px;
+  max-height: 80vh;
+  overflow: auto;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(0.96);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  padding: 24px 20px;
+}
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.brand {
+  height: 28px;
+}
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #595757;
+  font-size: 28px;
+}
+
+.open .panel {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 25px 0;
+}
+
+.item img {
+  width: 56px;
+  height: 56px;
+}
+
+.ja {
+  display: block;
+  color: #595757;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.en {
+  display: block;
+  color: #595757;
+  font-size: 18px;
+}
+
+/* per-page color accents for English label */
+.enRed {
+  color: var(--red);
+}
+.enGreen {
+  color: var(--green);
+}
+.enBlue {
+  color: var(--blue);
+}
+.enBlack {
+  color: var(--black);
+}

@@ -1,0 +1,59 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box; /* 右パディングで横はみ出しを防止 */
+  background: transparent;
+  z-index: 20;
+}
+
+.logo {
+  height: 30px;
+  top: 3px;
+  position: relative;
+}
+
+.hamburger {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  position: relative;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  height: 2px;
+  background: #595757;
+  transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 8px;
+}
+.hamburger span:nth-child(2) {
+  top: 16px;
+}
+.hamburger span:nth-child(3) {
+  top: 24px;
+}
+
+.open span:nth-child(1) {
+  top: 16px;
+  transform: rotate(45deg);
+}
+.open span:nth-child(2) {
+  opacity: 0;
+}
+.open span:nth-child(3) {
+  top: 16px;
+  transform: rotate(-45deg);
+}

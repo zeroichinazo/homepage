@@ -1,0 +1,240 @@
+:root {
+  --red: #ea6060;
+  --blue: #5185c5;
+  --green: #05502b;
+  --black: #595757;
+  --white: #ffffff;
+  --orange: #fbae17;
+}
+
+.pageWrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* 横スクロールの発生を抑止 */
+  /* 格子模様（細グリッドのみ） */
+  background-image:
+    /* 細い格子（ブルー） */ linear-gradient(
+      to right,
+      rgba(89, 87, 87, 0.1) 0.8px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(89, 87, 87, 0.1) 0.8px, transparent 1px),
+    /* ベース */ linear-gradient(#ffffff, #ffffff);
+  background-size: 16px 16px, 16px 16px, auto auto;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+/* PC時は背景をプレーンな白にし、中央にモバイル幅の画面を配置 */
+.pcFrame {
+  --app-width: 428px;
+}
+
+.appRoot {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pageWrap {
+    background-image: none;
+    background-color: #ffffff;
+  }
+  .appRoot {
+    width: var(--app-width, 428px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.main {
+  padding-top: 64px;
+  flex: 1 0 auto; /* フッターを最下部へ押し下げる */
+  /* グローバル背景は pageWrap にて適用。main は透過でOK */
+}
+
+/* Aboutなどで background_2.png の代わりにロゴを斜めにリピートするための背景 */
+.mainPattern {
+  position: relative;
+  overflow: hidden;
+  background-image: none;
+}
+.mainPattern::after {
+  content: "";
+  position: absolute;
+  inset: -50% -50% -50% -50%;
+  /* 二層の同一タイルを使い、2層目を半タイル分ずらしてレンガ状に配置 */
+  background-image: var(--pattern-url), var(--pattern-url);
+  background-repeat: repeat, repeat;
+  background-size: var(--pattern-tile-w, auto) var(--pattern-tile-h, auto),
+    var(--pattern-tile-w, auto) var(--pattern-tile-h, auto);
+  background-position: 0 0,
+    calc(var(--pattern-tile-w, 0px) / 2) calc(var(--pattern-tile-h, 0px) / 2);
+  transform: rotate(var(--pattern-rotate, -20deg)) translate(0, 0);
+  transform-origin: center;
+  z-index: 0;
+  opacity: 0; /* mobile では非表示 */
+  animation: none;
+  will-change: transform;
+}
+
+/* Aboutページはモバイルでもロゴタイル背景を表示 */
+.aboutPattern.mainPattern::after {
+  opacity: var(--pattern-opacity-2, 0.05);
+  animation: moveDiagonal2 var(--pattern-speed-2, 56s) linear infinite;
+}
+
+@media (min-width: 768px) {
+  .pcFrame .mainPattern::after {
+    opacity: var(--pattern-opacity-2, 0.05);
+    animation: moveDiagonal2 var(--pattern-speed-2, 56s) linear infinite;
+  }
+}
+.mainPattern > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes moveDiagonal2 {
+  0% {
+    transform: rotate(var(--pattern-rotate, -20deg))
+      translate(
+        var(--pattern-offset-x-2, 90px),
+        var(--pattern-offset-y-2, 45px)
+      );
+  }
+  100% {
+    transform: rotate(var(--pattern-rotate, -20deg))
+      translate(
+        calc(var(--pattern-offset-x-2, 90px) - var(--pattern-shift-x, 200px)),
+        calc(var(--pattern-offset-y-2, 45px) + var(--pattern-shift-y, 200px))
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainPattern::after {
+    animation: none;
+  }
+}
+
+.footer {
+  padding: 12px 0;
+  text-align: center;
+  color: var(--white);
+  background: var(--green);
+  font-size: 12px;
+}
+
+/* ===== PC専用: 左ロゴ/右パネル ===== */
+.desktopLeftBrand,
+.desktopRightPanel {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-top: 0; /* ヘッダー非表示のため上余白をゼロに */
+    padding-bottom: 0; /* 下余白もゼロに */
+    position: relative; /* 擬似要素の基点 */
+  }
+  /* 中央カラム(.appRoot)に格子背景＋わずかな影を付与し、上部/下部の余白も同背景で埋める */
+  .appRoot {
+    position: relative;
+    min-height: 100%; /* main の高さ（=残余の縦幅）いっぱいに伸ばす */
+  }
+  .main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--app-width, 428px);
+    pointer-events: none;
+    /* モバイルAboutで使用していた格子背景 */
+    background-image: linear-gradient(
+        to right,
+        rgba(89, 87, 87, 0.1) 0.8px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(89, 87, 87, 0.1) 0.8px, transparent 1px),
+      linear-gradient(#ffffff, #ffffff);
+    background-size: 16px 16px, 16px 16px, auto auto;
+    background-position: 0 0, 0 0, 0 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+  }
+  .appRoot > * {
+    position: relative;
+    z-index: 2; /* 背景より手前に配置 */
+  }
+  .desktopLeftBrand {
+    display: block;
+    position: fixed;
+    left: calc((100vw - var(--app-width, 428px)) / 4);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  .desktopLeftBrand img {
+    width: 140px;
+    height: auto;
+    display: block;
+    opacity: 0.9;
+  }
+  .desktopRightPanel {
+    display: block;
+    position: fixed;
+    right: calc((100vw - var(--app-width, 428px)) / 4);
+    top: 50%;
+    transform: translate(50%, -50%);
+    bottom: auto;
+    width: min(340px, calc((100vw - var(--app-width, 428px)) / 2 - 24px));
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+    background: transparent;
+    z-index: 10;
+  }
+  .desktopRightPanel nav {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 16px 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(2px);
+  }
+  .panelItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 6px;
+  }
+  .panelItem img {
+    width: 44px;
+    height: 44px;
+  }
+  .panelJa {
+    display: block;
+    color: #595757;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .panelEn {
+    display: block;
+    color: #595757;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+  .enRed {
+    color: var(--red);
+  }
+  .enGreen {
+    color: var(--green);
+  }
+  .enBlue {
+    color: var(--blue);
+  }
+  .enBlack {
+    color: var(--black);
+  }
+}
