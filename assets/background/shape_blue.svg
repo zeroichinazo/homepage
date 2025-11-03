@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_メイン" data-name="メイン" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256 220">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#_名称未設定グラデーション_22);
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション_22" data-name="名称未設定グラデーション 22" x1="7.57" y1="109.5" x2="248.43" y2="109.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4e84c2"/>
+      <stop offset="1" stop-color="#5185c5"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M230.74,110.65c35.29,36.2,17.41,116.4-50.31,106.18C118.55,207.48,7.57,198.29,7.57,135.7S54.18-30.24,101.66,10.55c42.02,36.1,85.67,55.56,129.09,100.1Z"/>
+</svg>
