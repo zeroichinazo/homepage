@@ -1,8 +1,8 @@
 export const site = {
   name: "0001(ゼロイチ)",
   description:
-    "00-01年生まれの同級生クリエイター3人による謎解き制作チーム『0001(ゼロイチ)』。様々な形でひらめきの楽しさをお届けしています。",
-  siteUrl: "https://example.com", // 公開URLに合わせて変更
+    "関西の謎解きクリエイター3人による制作チーム『0001(ゼロイチ)』。謎解きやボードゲームなど、様々な形でひらめきの楽しさをお届けしています。",
+  siteUrl: "https://zeroichinazo.com", // 公開URLに合わせて変更
   twitterSite: "@0001_nazo",
   ogImage: "/assets/og/og_zeroichi.png",
   favicon: "/favicon.ico",

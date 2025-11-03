@@ -134,9 +134,18 @@ const About: React.FC = () => {
               >
                 {openMember.name}
               </div>
-              {openMember.description && (
-                <p className={styles.modalText}>{openMember.description}</p>
-              )}
+              {openMember.description &&
+                (typeof openMember.description === "string" &&
+                openMember.description.includes("<") ? (
+                  <p
+                    className={styles.modalText}
+                    dangerouslySetInnerHTML={{
+                      __html: openMember.description.replace(/\n/g, "<br>"),
+                    }}
+                  />
+                ) : (
+                  <p className={styles.modalText}>{openMember.description}</p>
+                ))}
               <a
                 className={styles.modalXBtn}
                 href={openMember.xUrl || "#"}
