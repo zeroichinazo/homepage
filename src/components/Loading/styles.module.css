@@ -36,7 +36,7 @@
 .domino {
   width: 26px;
   height: 70px;
-  border-radius: 2px;
+  border-radius: 3.5px;
   position: relative;
   transform-origin: bottom center;
   animation: fall 2.8s cubic-bezier(0.45, 0.02, 0.2, 1) forwards;
@@ -100,36 +100,52 @@
 }
 .d6 {
   background: #ea6060;
-  animation-delay: 1.5s;
-  --rot: 14deg;
+  animation-delay: 1.7s;
+  --rot: 17deg;
   --tx: 0px;
   --ty: 0px;
   --over: 0deg;
+  z-index: 2; /* d7 より前面に出す */
 }
 .d7 {
   background: #595757;
-  animation-delay: 1.55s;
+  animation-delay: 1.8s;
   --rot: 0deg;
   --tx: 0px;
   --ty: 0px;
   /* 「1」の外形に合わせ、角丸は右上のみ強めに */
   border-radius: 0;
-  border-top-right-radius: 8px;
+  border-top-right-radius: 4px;
+  /* 調整用（縦棒幅・上横棒の高さ・でっぱり長さ） */
+  --one-vertical-width: 13px;
+  --one-top-height: 14px;
+  --one-protrusion: 9px;
+  z-index: 1;
 }
 /* 左側を大きく切り抜いて縦棒（右側）＋上の横棒を残す */
 .d7::after {
   content: "";
   position: absolute;
   left: 0;
-  right: 12px; /* 縦棒の太さ = 26 - 12 = 14px */
-  top: 12px; /* 上の横棒の高さ */
+  right: var(--one-vertical-width);
+  top: var(--one-top-height);
   bottom: 0;
   background: #fff;
-  border-top-right-radius: 3px; /* 横棒と縦棒の内側角を少し丸く */
+  /* 角丸のにじみ防止：一旦リセットして必要な角だけ付与 */
+  border-radius: 0;
+  border-top-right-radius: 1px; /* 横棒と縦棒の内側角を少し丸く */
 }
-/* 追加の切り欠きは不要なので無効化 */
+/* 上の横棒の“でっぱり”長さを調整する白抜き */
 .d7::before {
-  content: none;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: calc(var(--one-vertical-width) + var(--one-protrusion));
+  top: 0;
+  height: var(--one-top-height);
+  background: #fff;
+  /* 角丸の継承を明示的に無効化 */
+  border-radius: 0;
 }
 
 @keyframes fall {
