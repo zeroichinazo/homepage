@@ -38,7 +38,7 @@ const Works: React.FC = () => {
     <div className={styles.page}>
       <Seo title="制作したもの" />
       <div className={styles.titleRow}>
-        <img src="/assets/logo/logo_works.svg" alt="works" />
+        <img src="assets/logo/logo_works.svg" alt="works" />
         <div>
           <div className={styles.ja}>制作したもの</div>
           <div className={styles.en}>Works</div>

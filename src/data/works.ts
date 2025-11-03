@@ -4,7 +4,7 @@ export const worksItems: WorkItem[] = [
   /*情報更新時は上段に追加すること*/
   {
     title: "八回廻し",
-    image: "/assets/works/works_hachikaimawashi.png",
+    image: "assets/works/works_hachikaimawashi.png",
     tags: [
       { label: "謎解き", color: "var(--red)" },
       { label: "キット型", color: "var(--black)" },
@@ -15,7 +15,7 @@ export const worksItems: WorkItem[] = [
   },
   {
     title: "トニナルコトバ",
-    image: "/assets/works/works_toninarukotoba.png",
+    image: "assets/works/works_toninarukotoba.png",
     tags: [{ label: "ボードゲーム", color: "var(--orange)" }],
     description: `｢瞬発力｣と｢語彙力｣ がカギ！？<br>「〇〇と△△になる」のお題に当てはまるコトバをいち早く答えよう！`,
     hashtag: "ゼロイチトニナルコトバ",
@@ -23,7 +23,7 @@ export const worksItems: WorkItem[] = [
   },
   {
     title: "START!!",
-    image: "/assets/works/works_start.png",
+    image: "assets/works/works_start.png",
     tags: [
       { label: "謎解き", color: "var(--red)" },
       { label: "キット型", color: "var(--black)" },
@@ -34,7 +34,7 @@ export const worksItems: WorkItem[] = [
   },
   {
     title: "パシャリドル",
-    image: "/assets/works/works_pashariddle.png",
+    image: "assets/works/works_pashariddle.png",
     tags: [
       { label: "謎解き", color: "var(--red)" },
       { label: "対面型", color: "var(--green)" },
@@ -45,7 +45,7 @@ export const worksItems: WorkItem[] = [
   },
   {
     title: "関西ひとつなぎの謎",
-    image: "/assets/works/works_hitotunagi.png",
+    image: "assets/works/works_hitotunagi.png",
     tags: [
       { label: "謎解き", color: "var(--red)" },
       { label: "周遊型", color: "var(--blue)" },
@@ -56,7 +56,7 @@ export const worksItems: WorkItem[] = [
   },
   {
     title: "桜川謎解き街ガイド",
-    image: "/assets/works/works_sakuragawanazo.png",
+    image: "assets/works/works_sakuragawanazo.png",
     tags: [
       { label: "謎解き", color: "var(--red)" },
       { label: "周遊型", color: "var(--blue)" },

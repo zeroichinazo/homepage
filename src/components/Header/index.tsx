@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       <header className={styles.header}>
         <Link to="/">
           <img
-            src="/assets/logo/logo_zeroichi.svg"
+            src="assets/logo/logo_zeroichi.svg"
             alt="ゼロイチ"
             className={styles.logo}
           />

@@ -42,7 +42,7 @@ const About: React.FC = () => {
     <div className={styles.page} ref={pageRef}>
       <Seo title="ゼロイチとは" />
       <div className={styles.heroTitle}>
-        <img src="/assets/logo/logo_about.svg" alt="about" />
+        <img src="assets/logo/logo_about.svg" alt="about" />
         <div>
           <div className={styles.ja}>ゼロイチとは</div>
           <div className={styles.en}>About</div>
@@ -52,7 +52,7 @@ const About: React.FC = () => {
         <img
           className={`${styles.brand} ${styles.reveal}`}
           style={{ ["--delay" as any]: "0ms" }}
-          src="/assets/logo/logo_zeroichi.svg"
+          src="assets/logo/logo_zeroichi.svg"
           alt="zeroichi"
         />
         <div
@@ -65,7 +65,7 @@ const About: React.FC = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img src="/assets/logo/logo_X.svg" alt="X" />
+            <img src="assets/logo/logo_X.svg" alt="X" />
             <span>プロフィールを見る</span>
           </a>
         </div>
@@ -89,7 +89,7 @@ const About: React.FC = () => {
         </Link>
 
         <div className={styles.sectionTitle}>
-          <img src="/assets/logo/logo_menber.svg" alt="member" />
+          <img src="assets/logo/logo_menber.svg" alt="member" />
           <div>
             <div className={styles.ja}>メンバー紹介</div>
             <div className={styles.en}>Menber</div>
@@ -143,7 +143,7 @@ const About: React.FC = () => {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <img src="/assets/logo/logo_X.svg" alt="X" />
+                <img src="assets/logo/logo_X.svg" alt="X" />
                 <span>プロフィールを見る</span>
               </a>
             </div>

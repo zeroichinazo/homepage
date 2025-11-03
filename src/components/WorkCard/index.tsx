@@ -27,7 +27,7 @@ const WorkCard: React.FC<Props> = ({
   imageLoading = "lazy",
   imageDecoding = "async",
 }) => {
-  const displayImage = image || "/assets/works/works_sakuragawanazo.jpg";
+  const displayImage = image || "assets/works/works_sakuragawanazo.jpg";
   const hashtagText = hashtag || title;
   const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(
     `#${hashtagText}`
