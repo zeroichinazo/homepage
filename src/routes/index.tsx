@@ -6,21 +6,7 @@ import Works from "../pages/Works/index";
 import Contact from "../pages/Contact/index";
 import Layout from "../components/Layout";
 
-const getBase = () => {
-  const pub = process.env.PUBLIC_URL || "";
-  if (pub) {
-    try {
-      const u = new URL(pub);
-      const p = u.pathname.replace(/\/$/, "");
-      return p || "/";
-    } catch {
-      return pub.startsWith("/") ? pub : "/";
-    }
-  }
-  // 開発時: CRAがhomepageを元に /<repo> で開く場合に対応
-  const m = window.location.pathname.match(/^\/(?:([^/]+))(?:\/|$)/);
-  return m ? `/${m[1]}` : "/";
-};
+const getBase = () => "/"; // www 専用運用のため常にルート
 
 export const router = createBrowserRouter(
   [

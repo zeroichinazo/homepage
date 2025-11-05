@@ -14,7 +14,7 @@ const Home: React.FC = () => {
     h: 140,
   });
   const patternHeightPx = 140;
-  const aboutLogoUrl = `${process.env.PUBLIC_URL}/assets/logo/logo_zeroichi_nochar.svg`;
+  const aboutLogoUrl = "/assets/logo/logo_zeroichi_nochar.svg";
   useEffect(() => {
     const img = new Image();
     img.src = aboutLogoUrl;
@@ -64,17 +64,17 @@ const Home: React.FC = () => {
       <section className={`${styles.hero} hero-section`}>
         <img
           className={styles.blobRed}
-          src="assets/background/shape_red.svg"
+          src="/assets/background/shape_red.svg"
           alt="red"
         />
         <img
           className={styles.blobGreen}
-          src="assets/background/shape_green.svg"
+          src="/assets/background/shape_green.svg"
           alt="green"
         />
         <img
           className={styles.blobBlue}
-          src="assets/background/shape_blue.svg"
+          src="/assets/background/shape_blue.svg"
           alt="blue"
         />
         <h1 className={styles.catch}>
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
         }}
       >
         <div className={styles.sectionTitle}>
-          <img src="assets/logo/logo_about.svg" alt="about" />
+          <img src="/assets/logo/logo_about.svg" alt="about" />
           <div>
             <div className={styles.ja}>ゼロイチとは</div>
             <div className={styles.en}>About</div>
@@ -115,7 +115,7 @@ const Home: React.FC = () => {
         </div>
         <img
           className={styles.brand}
-          src="assets/logo/logo_zeroichi.svg"
+          src="/assets/logo/logo_zeroichi.svg"
           alt="zeroichi"
         />
         <p className={styles.desc}>
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
         } ${worksVisible ? styles.revealVisible : ""}`}
       >
         <div className={styles.sectionTitleBlue}>
-          <img src="assets/logo/logo_works.svg" alt="works" />
+          <img src="/assets/logo/logo_works.svg" alt="works" />
           <div>
             <div className={styles.ja}>制作したもの</div>
             <div className={styles.enBlue}>Works</div>

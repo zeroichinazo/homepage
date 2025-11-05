@@ -2,7 +2,7 @@ export const site = {
   name: "0001(ゼロイチ)",
   description:
     "関西の謎解きクリエイター3人による制作チーム『0001(ゼロイチ)』。謎解きやボードゲームなど、様々な形でひらめきの楽しさをお届けしています。",
-  siteUrl: "https://zeroichinazo.com", // 公開URLに合わせて変更
+  siteUrl: "https://www.zeroichinazo.com", // 公開URLに合わせて変更
   twitterSite: "@0001_nazo",
   ogImage: "/assets/og/og_zeroichi.png",
   favicon: "/favicon.ico",

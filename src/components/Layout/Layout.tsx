@@ -42,8 +42,8 @@ const Layout: React.FC = () => {
     };
   }, []);
 
-  // 画像は使わず、CSSのみで背景を再現するためURLは不要
-  const logoPatternUrl = `${process.env.PUBLIC_URL}/assets/logo/logo_zeroichi_nochar.svg`;
+  // ルート絶対パスに固定（サブパスや <base> に依存しない）
+  const logoPatternUrl = "/assets/logo/logo_zeroichi_nochar.svg";
   const isAbout = location.pathname.startsWith("/about");
   const patternHeightPx = 140;
   const [tileSize, setTileSize] = useState<{ w: number; h: number }>({
@@ -100,12 +100,12 @@ const Layout: React.FC = () => {
           {isDesktop && (
             <>
               <aside className={styles.desktopLeftBrand} aria-hidden>
-                <img src="assets/logo/logo_zeroichi.svg" alt="ゼロイチ" />
+                <img src="/assets/logo/logo_zeroichi.svg" alt="ゼロイチ" />
               </aside>
               <aside className={styles.desktopRightPanel} aria-label="メニュー">
                 <nav>
                   <div className={styles.panelItem}>
-                    <img src="assets/logo/logo_home.svg" alt="home" />
+                    <img src="/assets/logo/logo_home.svg" alt="home" />
                     <Link to="/">
                       <span className={styles.panelJa}>ホーム</span>
                       <span className={`${styles.panelEn} ${styles.enRed}`}>
@@ -114,7 +114,7 @@ const Layout: React.FC = () => {
                     </Link>
                   </div>
                   <div className={styles.panelItem}>
-                    <img src="assets/logo/logo_about.svg" alt="about" />
+                    <img src="/assets/logo/logo_about.svg" alt="about" />
                     <Link to="/about">
                       <span className={styles.panelJa}>ゼロイチとは</span>
                       <span className={`${styles.panelEn} ${styles.enGreen}`}>
@@ -123,7 +123,7 @@ const Layout: React.FC = () => {
                     </Link>
                   </div>
                   <div className={styles.panelItem}>
-                    <img src="assets/logo/logo_works.svg" alt="works" />
+                    <img src="/assets/logo/logo_works.svg" alt="works" />
                     <Link to="/works">
                       <span className={styles.panelJa}>制作したもの</span>
                       <span className={`${styles.panelEn} ${styles.enBlue}`}>
@@ -132,7 +132,7 @@ const Layout: React.FC = () => {
                     </Link>
                   </div>
                   <div className={styles.panelItem}>
-                    <img src="assets/logo/logo_contact.svg" alt="contact" />
+                    <img src="/assets/logo/logo_contact.svg" alt="contact" />
                     <Link to="/contact">
                       <span className={styles.panelJa}>お問い合わせ</span>
                       <span className={`${styles.panelEn} ${styles.enBlack}`}>

@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
     <div className={styles.page}>
       <Seo title="お問い合わせ" />
       <div className={styles.titleRow}>
-        <img src="assets/logo/logo_contact.svg" alt="contact" />
+        <img src="/assets/logo/logo_contact.svg" alt="contact" />
         <div>
           <div className={styles.ja}>お問い合わせ</div>
           <div className={styles.en}>Contact</div>
