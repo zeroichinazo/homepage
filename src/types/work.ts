@@ -10,5 +10,6 @@ export type WorkItem = {
   description?: string;
   purchaseUrl?: string;
   mapUrl?: string;
+  officialUrl?: string;
   hashtag?: string;
 };

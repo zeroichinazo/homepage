@@ -61,6 +61,7 @@ const Works: React.FC = () => {
               tags={w.tags}
               period={w.period}
               description={w.description}
+              officialUrl={w.officialUrl}
               hashtag={w.hashtag}
             />
           </div>

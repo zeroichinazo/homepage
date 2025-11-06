@@ -10,6 +10,7 @@ type Props = {
   description?: string;
   purchaseUrl?: string;
   mapUrl?: string;
+  officialUrl?: string;
   hashtag?: string; // 未指定なら title を使用
   imageLoading?: "eager" | "lazy";
   imageDecoding?: "async" | "auto" | "sync";
@@ -23,6 +24,7 @@ const WorkCard: React.FC<Props> = ({
   description,
   purchaseUrl,
   mapUrl,
+  officialUrl,
   hashtag,
   imageLoading = "lazy",
   imageDecoding = "async",
@@ -42,6 +44,17 @@ const WorkCard: React.FC<Props> = ({
         loading={imageLoading}
         decoding={imageDecoding as any}
       />
+      {officialUrl && (
+        <a
+          href={officialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.officialButton}
+          aria-label="公式サイトへ"
+        >
+          公式サイトへ ＞
+        </a>
+      )}
       <div className={styles.inner}>
         <h3 className={styles.title}>{title}</h3>
         {typeof period === "string" && period.trim().length > 0 && (

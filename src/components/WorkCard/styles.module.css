@@ -75,3 +75,29 @@
   color: #ffffff;
   text-decoration: none;
 }
+
+.officialButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #0ea5e9; /* アクセント色（スカイブルー） */
+  color: #ffffff;
+  text-decoration: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 16px;
+  border-top-left-radius: 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+.officialButton:visited,
+.officialButton:hover,
+.officialButton:active,
+.officialButton:focus {
+  background: #0284c7; /* hoverでやや濃く */
+  color: #ffffff;
+  text-decoration: none;
+}

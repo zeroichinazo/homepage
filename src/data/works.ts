@@ -53,6 +53,7 @@ export const worksItems: WorkItem[] = [
     description: `株式会社フラップゼロアルファ様が主催する、関西10鉄道とコラボした超大型プロジェクト。プロジェクト内の全ての謎を制作しました。`,
     hashtag: "関西ひとつなぎの謎",
     period: "2025/3/19",
+    officialUrl: "https://nazotoki-zepets.com/10piece-nazo-2025/",
   },
   {
     title: "桜川謎解き街ガイド",
@@ -64,5 +65,6 @@ export const worksItems: WorkItem[] = [
     description: `大阪最宴祭13運営コンテンツの1つ。<br>桜川を散策する、王道の周遊型謎解きです。<br>※現在は販売を停止しております。`,
     hashtag: "桜川謎解き街ガイド",
     period: "2024/9/21",
+    officialUrl: "https://www.sakuragawanazo.com",
   },
 ];

@@ -100,6 +100,7 @@ const WorksCarousel: React.FC<Props> = ({ items, autoPlayMs }) => {
               tags={w.tags}
               period={w.period}
               description={w.description}
+              officialUrl={w.officialUrl}
               imageLoading={i === 0 ? "eager" : "lazy"}
               imageDecoding="async"
             />
