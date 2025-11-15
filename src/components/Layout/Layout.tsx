@@ -11,7 +11,7 @@ const Layout: React.FC = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const seen = localStorage.getItem("zeroichi_seen_loading");
+    const seen = sessionStorage.getItem("zeroichi_seen_loading");
     if (!seen) {
       setShowLoading(true);
       const t1 = window.setTimeout(() => {
@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
         const t2 = window.setTimeout(() => {
           setShowLoading(false);
           setLoadingExit(false);
-          localStorage.setItem("zeroichi_seen_loading", "true");
+          sessionStorage.setItem("zeroichi_seen_loading", "true");
         }, 700); // Loadingのexitアニメ長（CSSと同期）
         return () => window.clearTimeout(t2);
       }, 3000);
